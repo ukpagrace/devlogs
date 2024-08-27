@@ -25,8 +25,8 @@ interface IRecord {
     answer: string,
     answered: boolean
 }
-console.log(import.meta.env.SUPABASE_URL!,import.meta.env.MODE)
-const supabase = createClient(import.meta.env.SUPABASE_URL!, import.meta.env.SUPABASE_ANON_KEY!);
+
+const supabase = createClient(import.meta.env.VITE_SUPABASE_URL!, import.meta.env.VITE_SUPABASE_ANON_KEY!);
 
 function App() {
     const [records, setRecords] = useState<IRecord[]>([]);
