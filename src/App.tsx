@@ -54,7 +54,7 @@ function App() {
 
 
   return (
-    <div className={cn(isQuestionModalOpen && "bg-slate-700 absolute h-screen w-screen z-40")}>
+    <div>
         <div className="flex justify-end">
         <Button onClick={openQuestionModal}>Create Question</Button>
             {isQuestionModalOpen && <QuestionCard onClose={()=> setIsQuestionModalOpen(false)}/>}
@@ -89,13 +89,11 @@ function App() {
                 ))
             }
         </div>
+            {
+                showAnswer == data.id &&
+                <AnswerCard id={data.id} question={data.questions} onClose={() => setShowAnswer(0)}/>
+            } 
 
-            <div className={cn(showAnswer == data.id && "bg-slate-700 w-[1190px] absolute",)}>
-                {
-                    showAnswer == data.id &&
-                    <AnswerCard id={data.id} question={data.questions} onClose={() => setShowAnswer(0)}/>
-                } 
-            </div>
 
     </div>
   )
