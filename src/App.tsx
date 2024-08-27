@@ -14,9 +14,6 @@ import { QuestionCard } from "./component/question-modal"
 import { createClient } from "@supabase/supabase-js";
 import { Check } from "lucide-react";
 import { AnswerCard } from "./component/answer-modal"
-import { cn } from "./lib/utils"
-
-
 
 interface IRecord {
     id: number,
