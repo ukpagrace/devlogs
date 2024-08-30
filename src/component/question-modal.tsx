@@ -45,7 +45,6 @@ export function QuestionCard({onClose}: QuestionModalProps) {
         resolver: zodResolver(FormSchema),
       })
     async function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log("this was called");
         toast({
         title: "You submitted the following values:",
         description: (

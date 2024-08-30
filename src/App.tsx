@@ -27,9 +27,12 @@ const supabase = createClient(import.meta.env.VITE_SUPABASE_URL!, import.meta.en
 
 function App() {
     const [records, setRecords] = useState<IRecord[]>([]);
+    const [isQuestionModalOpen, setIsQuestionModalOpen] = useState(false);
+    const [isQuestionSubmitted, setIsQuestionSubmitted] = useState(false);
+    const [showAnswer, setShowAnswer] = useState(0);
     useEffect(() => {
         getRecords();
-      }, []);
+      }, [isQuestionSubmitted]);
     
 
 
@@ -39,8 +42,7 @@ function App() {
             setRecords(data);
         }
     }
-    const [isQuestionModalOpen, setIsQuestionModalOpen] = useState(false);
-    const [showAnswer, setShowAnswer] = useState(0);
+
     const [data, setData] = useState({
         id: -1,
         questions: ""
@@ -50,11 +52,15 @@ function App() {
     };
 
 
+
   return (
     <div>
         <div className="flex justify-end">
         <Button onClick={openQuestionModal}>Create Question</Button>
-            {isQuestionModalOpen && <QuestionCard onClose={()=> setIsQuestionModalOpen(false)}/>}
+            {isQuestionModalOpen && <QuestionCard onClose={()=> {
+                setIsQuestionModalOpen(false)
+                setIsQuestionSubmitted(true);
+            }}/>}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
             {
